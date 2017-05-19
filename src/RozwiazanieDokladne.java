@@ -7,6 +7,7 @@ public class RozwiazanieDokladne {
     private List<Character> alfabet;
     private int bestHD;
     private String znaleziony = "";
+    private long pamiecMax = 0;
 
     public RozwiazanieDokladne(CSPHelper cspHelper) {
         this.cspHelper = cspHelper;
@@ -22,9 +23,17 @@ public class RozwiazanieDokladne {
     }
 
     void dostawZnak(String s, int i){
+        // TODO pomiar pamięci
+        long pamiec = dajUzyciePamieci();
+        if(pamiecMax < pamiec){
+            pamiecMax = pamiec;
+        }
+
         if (i == 0) {
-            //System.out.println("Kompletny string: " + s + " HD: " + cspHelper.sprawdzHD(s));
+            // TODO pomiar pamięci
+
             if (cspHelper.sprawdzHD(s) < bestHD) {
+
                 bestHD = cspHelper.sprawdzHD(s);
                 znaleziony = s;
             }
@@ -36,5 +45,15 @@ public class RozwiazanieDokladne {
                 dostawZnak(konstruowany, i-1);
             }
         }
+    }
+
+    private static long dajUzyciePamieci(){
+        int mb = 1024*1024;
+        Runtime runtime = Runtime.getRuntime();
+        return (runtime.totalMemory() - runtime.freeMemory()) / mb;
+    }
+
+    public long dajPamiec() {
+        return pamiecMax;
     }
 }

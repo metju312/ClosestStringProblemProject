@@ -1,5 +1,4 @@
 import org.apache.commons.io.FilenameUtils;
-import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -18,18 +17,31 @@ public class Main {
     private static int razyADokladny = 100;
     private static int razyAHeurystyczny = 100;
 
+    private static long pamiecDokladny = 0;
+    private static long pamiecHeurystyczny = 0;
+
     private static XYSeries dokladnyDane = new XYSeries("Dokladny");
     private static XYSeries heurystycznyDane = new XYSeries("Heurystyczny");
+
+    private static XYSeries dokladnyPamiec = new XYSeries("Pamiec Dokladny");
+    private static XYSeries heurystycznyPamiec = new XYSeries("Pamiec Heurystyczny");
 
     //parametry: [dlugoscAlfabetu] [dlugoscCiagowWejsciowych] [liczbaCiagowWejsciowych]
     public static void main(String[] args) throws IOException {
         TaskGenerator.main(args);
         wczytajAlfabet();
         wczytajIRozwiazZadania();
-        generujWykres();
+        generujWykresDanych();
+        generujWykresPamieci();
     }
 
-    private static void generujWykres() {
+    private static void generujWykresPamieci() {
+        XYSeriesCollection collection = new XYSeriesCollection(dokladnyPamiec);
+        collection.addSeries(heurystycznyPamiec);
+        ChartFrame.generateChart(collection);
+    }
+
+    private static void generujWykresDanych() {
         XYSeriesCollection collection = new XYSeriesCollection(dokladnyDane);
         collection.addSeries(heurystycznyDane);
         ChartFrame.generateChart(collection);
@@ -72,8 +84,10 @@ public class Main {
         }
         long endTime = System.currentTimeMillis();
         long totalTime = endTime - startTime;
-        System.out.println(", T: " + totalTime/1000.0 + "s");
+        System.out.print(", T: " + totalTime/1000.0 + "s");
+        System.out.println(", P: " + pamiecDokladny + " MB");
         dokladnyDane.add(iterator, totalTime);
+        dokladnyPamiec.add(iterator, pamiecDokladny);
 
 
         System.out.print("H: ");
@@ -83,9 +97,11 @@ public class Main {
         }
         endTime = System.currentTimeMillis();
         totalTime = endTime - startTime;
-        System.out.println(", T: " + totalTime/1000.0 + "s");
+        System.out.print(", T: " + totalTime/1000.0 + "s");
+        System.out.println(", P: " + pamiecHeurystyczny + " MB");
         System.out.println("-----------------------------------------------");
         heurystycznyDane.add(iterator, totalTime);
+        heurystycznyPamiec.add(iterator, pamiecHeurystyczny);
 
         iterator++;
     }
@@ -93,6 +109,10 @@ public class Main {
     private static void sprawdzRozwiazanieDokladne() {
         RozwiazanieDokladne rozwiazanieDokladne = new RozwiazanieDokladne(cspHelper);
         String rozwiazanie = rozwiazanieDokladne.rozwiaz();
+        long pamiec = rozwiazanieDokladne.dajPamiec();
+        if(pamiecDokladny < pamiec){
+            pamiecDokladny = pamiec;
+        }
         System.out.print(rozwiazanie + ", HD = " + cspHelper.sprawdzHD(rozwiazanie) + " ");
     }
 
@@ -100,6 +120,10 @@ public class Main {
     private static void sprawdzRozwiazanieHeurystyczne() {
         ACO aco = new ACO(listS, alfabet, 80, 40, cspHelper);
         String rozwiazanie = aco.znajdzNajblizszyString();
+        long pamiec = pamiecHeurystyczny = aco.dajPamiec();
+        if(pamiecHeurystyczny < pamiec){
+            pamiecHeurystyczny = pamiec;
+        }
         System.out.print(rozwiazanie + ", HD = " + cspHelper.sprawdzHD(rozwiazanie) + " ");
     }
 }

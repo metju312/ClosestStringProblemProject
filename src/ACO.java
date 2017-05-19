@@ -13,6 +13,7 @@ public class ACO {
 	double p; // wspolczynnik parowania
 	double[] sumaWag;
 	CSPHelper csphelper;
+	private long pamiecMax = 0;
 	
 	double[][] T; // Feromony
 
@@ -144,6 +145,12 @@ public class ACO {
 		{
 			obecnaDroga = znajdzDroge(); // 5m + 3m * lA + 5
 			sprawdzany = zbudujString(obecnaDroga); // 2m + 1
+			// TODO pomiar pamięci
+			long pamiec = dajUzyciePamieci();
+			if(pamiecMax < pamiec){
+				pamiecMax = pamiec;
+			}
+
 			if(csphelper.sprawdzHD(sprawdzany) < hdNajkrotszych)
 			{
 				najkrotszaDroga = obecnaDroga;
@@ -151,6 +158,16 @@ public class ACO {
 			}
 		}
 		return zbudujString(najkrotszaDroga);
+	}
+
+	private static long dajUzyciePamieci(){
+		int mb = 1024*1024;
+		Runtime runtime = Runtime.getRuntime();
+		return (runtime.totalMemory() - runtime.freeMemory()) / mb;
+	}
+
+	public long dajPamiec() {
+		return pamiecMax;
 	}
 	
 	/*
