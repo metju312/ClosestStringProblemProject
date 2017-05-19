@@ -11,6 +11,7 @@ public class Main {
     private static CSPHelper cspHelper = new CSPHelper();
     private static List<Character> alfabet;
     private static List<String> listS;
+    private static String[] argumenty;
 
     private static int iterator = 2;
 
@@ -28,8 +29,8 @@ public class Main {
 
     //parametry: [dlugoscAlfabetu] [dlugoscCiagowWejsciowych] [liczbaCiagowWejsciowych]
     public static void main(String[] args) throws IOException {
+        argumenty = args;
         TaskGenerator.main(args);
-        wczytajAlfabet();
         wczytajIRozwiazZadania();
         generujWykresDanych();
         generujWykresPamieci();
@@ -52,8 +53,14 @@ public class Main {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(alfabetFile));
         alfabet = new ArrayList<>();
         String line = null;
+
         while ((line = bufferedReader.readLine()) != null) {
             alfabet.add(line.charAt(0));
+            if(czyDlugoscAlfabetuToParametr()){
+                if(iterator == alfabet.size()){
+                    break;
+                }
+            }
         }
         bufferedReader.close();
         cspHelper.setAlfabet(alfabet);
@@ -62,6 +69,7 @@ public class Main {
     private static void wczytajIRozwiazZadania() throws IOException {
         File folderZadan = new File("zadania");
         for(File file: folderZadan.listFiles()){
+            wczytajAlfabet();
             System.out.println(FilenameUtils.getBaseName(file.getName()));
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             listS = new ArrayList<>();
@@ -125,5 +133,12 @@ public class Main {
             pamiecHeurystyczny = pamiec;
         }
         System.out.print(rozwiazanie + ", HD = " + cspHelper.sprawdzHD(rozwiazanie) + " ");
+    }
+
+    private static boolean czyDlugoscAlfabetuToParametr(){
+        if(Integer.parseInt(argumenty[0]) >= Integer.parseInt(argumenty[1]) && Integer.parseInt(argumenty[0]) >= Integer.parseInt(argumenty[2])){
+            return true;
+        }
+        return false;
     }
 }

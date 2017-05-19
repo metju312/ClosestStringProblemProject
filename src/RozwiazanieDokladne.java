@@ -12,12 +12,12 @@ public class RozwiazanieDokladne {
     public RozwiazanieDokladne(CSPHelper cspHelper) {
         this.cspHelper = cspHelper;
         this.alfabet = cspHelper.getAlfabet();
-        this.bestHD = cspHelper.getListS().get(0).length();
+        this.bestHD = cspHelper.getListS().get(0).length() + 1;
     }
 
     public String rozwiaz() {
         //TimeUnit.SECONDS.sleep(5);
-        dostawZnak("", bestHD);
+        dostawZnak("", bestHD - 1);
 
         return znaleziony;
     }

@@ -13,6 +13,7 @@ public class ACO {
 	double p; // wspolczynnik parowania
 	double[] sumaWag;
 	CSPHelper csphelper;
+	List<Long> listaPamieci = new ArrayList<>();
 	private long pamiecMax = 0;
 	
 	double[][] T; // Feromony
@@ -147,6 +148,7 @@ public class ACO {
 			sprawdzany = zbudujString(obecnaDroga); // 2m + 1
 			// TODO pomiar pamięci
 			long pamiec = dajUzyciePamieci();
+			listaPamieci.add(pamiec);
 			if(pamiecMax < pamiec){
 				pamiecMax = pamiec;
 			}
@@ -167,7 +169,12 @@ public class ACO {
 	}
 
 	public long dajPamiec() {
-		return pamiecMax;
+		long zwracana = 0;
+		for (Long l: listaPamieci) {
+			zwracana+=l;
+		}
+		zwracana = zwracana/listaPamieci.size();
+		return zwracana;
 	}
 	
 	/*
