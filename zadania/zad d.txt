@@ -1,5 +1,4 @@
-abdc
-dcbc
-caca
-ddad
-dbdb
+dcdba
+adbbb
+cbdac
+aacdc

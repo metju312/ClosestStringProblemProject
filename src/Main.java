@@ -128,7 +128,7 @@ public class Main {
     private static void sprawdzRozwiazanieHeurystyczne() {
         ACO aco = new ACO(listS, alfabet, 80, 40, cspHelper);
         String rozwiazanie = aco.znajdzNajblizszyString();
-        long pamiec = pamiecHeurystyczny = aco.dajPamiec();
+        long pamiec = aco.dajPamiec();
         if(pamiecHeurystyczny < pamiec){
             pamiecHeurystyczny = pamiec;
         }

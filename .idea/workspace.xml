@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5cc25c55-004f-4146-a971-170f513cd795" name="Default" comment="Added memory calculations">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/zadania/zad a.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/zadania/zad b.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/zadania/zad c.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/zadania/zad d.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/zadania/zad e.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/zadania/zad f.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/zadania/zad g.txt" afterPath="" />
+    <list default="true" id="5cc25c55-004f-4146-a971-170f513cd795" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ClosestStringProblemProject/ACO.class" afterPath="$PROJECT_DIR$/out/production/ClosestStringProblemProject/ACO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ClosestStringProblemProject/Main.class" afterPath="$PROJECT_DIR$/out/production/ClosestStringProblemProject/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ClosestStringProblemProject/RozwiazanieDokladne.class" afterPath="$PROJECT_DIR$/out/production/ClosestStringProblemProject/RozwiazanieDokladne.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alfabet.txt" afterPath="$PROJECT_DIR$/alfabet.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ACO.java" afterPath="$PROJECT_DIR$/src/ACO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RozwiazanieDokladne.java" afterPath="$PROJECT_DIR$/src/RozwiazanieDokladne.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zadania/zad a.txt" afterPath="$PROJECT_DIR$/zadania/zad a.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zadania/zad b.txt" afterPath="$PROJECT_DIR$/zadania/zad b.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zadania/zad c.txt" afterPath="$PROJECT_DIR$/zadania/zad c.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zadania/zad d.txt" afterPath="$PROJECT_DIR$/zadania/zad d.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zadania/zad e.txt" afterPath="$PROJECT_DIR$/zadania/zad e.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zadania/zad f.txt" afterPath="$PROJECT_DIR$/zadania/zad f.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zadania/zad g.txt" afterPath="$PROJECT_DIR$/zadania/zad g.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +30,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+            <state relative-caret-position="0">
+              <caret line="24" column="59" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -52,61 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zad a.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zadania/zad a.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zad b.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zadania/zad b.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zad c.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zadania/zad c.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zad d.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zadania/zad d.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zad e.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zadania/zad e.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ACO.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ACO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ACO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="176" column="23" lean-forward="false" selection-start-line="176" selection-start-column="23" selection-end-line="176" selection-end-column="23" />
+            <state relative-caret-position="132">
+              <caret line="167" column="43" lean-forward="false" selection-start-line="167" selection-start-column="43" selection-end-line="167" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -163,10 +113,10 @@
         <option value="$PROJECT_DIR$/src/TaskGenerator.java" />
         <option value="$PROJECT_DIR$/alfabet.txt" />
         <option value="$PROJECT_DIR$/src/RozwiazanieDokladne.java" />
-        <option value="$PROJECT_DIR$/src/ACO.java" />
         <option value="$PROJECT_DIR$/zadania/zad a.txt" />
         <option value="$PROJECT_DIR$/zadania/zad e.txt" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/ACO.java" />
       </list>
     </option>
   </component>
@@ -223,20 +173,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="zadania" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClosestStringProblemProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ClosestStringProblemProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -266,7 +202,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="4 4 20" />
+      <option name="PROGRAM_PARAMETERS" value="4 9 4" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -737,7 +673,7 @@
       <workItem from="1495187726526" duration="123000" />
       <workItem from="1495187930562" duration="1719000" />
       <workItem from="1495193966991" duration="3123000" />
-      <workItem from="1495197244580" duration="5136000" />
+      <workItem from="1495197244580" duration="6931000" />
     </task>
     <task id="LOCAL-00001" summary="Added memory calculations">
       <created>1495197594359</created>
@@ -746,15 +682,22 @@
       <option name="project" value="LOCAL" />
       <updated>1495197594359</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="working alfabet parameter">
+      <created>1495202522447</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1495202522447</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51559000" />
+    <option name="totallyTimeSpent" value="53354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -765,8 +708,8 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38470587" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52588236" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21529412" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43294117" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36789298" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -796,7 +739,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added memory calculations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added memory calculations" />
+    <MESSAGE value="working alfabet parameter" />
+    <option name="LAST_COMMIT_MESSAGE" value="working alfabet parameter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1052,34 +996,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RozwiazanieDokladne.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ACO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="176" column="23" lean-forward="false" selection-start-line="176" selection-start-column="23" selection-end-line="176" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TaskGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zadania/zad a.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1116,13 +1036,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/zadania/zad a.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        <state relative-caret-position="0">
+          <caret line="24" column="59" lean-forward="false" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RozwiazanieDokladne.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="19" column="32" lean-forward="false" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ACO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="167" column="43" lean-forward="false" selection-start-line="167" selection-start-column="43" selection-end-line="167" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
