@@ -30,8 +30,6 @@ public class RozwiazanieDokladne {
         }
 
         if (i == 0) {
-            // TODO pomiar pamięci
-
             if (cspHelper.sprawdzHD(s) < bestHD) {
 
                 bestHD = cspHelper.sprawdzHD(s);

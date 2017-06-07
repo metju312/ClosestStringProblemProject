@@ -1,4 +1,4 @@
-aada
-cdbb
-dbdd
-dbba
+dbbb
+baaa
+dadd
+cacd

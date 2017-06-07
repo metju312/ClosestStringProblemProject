@@ -32,8 +32,8 @@ public class Main {
         argumenty = args;
         TaskGenerator.main(args);
         wczytajIRozwiazZadania();
-        generujWykresDanych();
         generujWykresPamieci();
+        generujWykresDanych();
     }
 
     private static void generujWykresPamieci() {

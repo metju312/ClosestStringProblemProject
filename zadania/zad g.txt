@@ -1,4 +1,8 @@
-cdcdaaac
-bdabbcbd
-cdbdcaba
-bbbbaabd
+cdcc
+cbad
+acba
+dccb
+acda
+dbdc
+cbdc
+dcab
