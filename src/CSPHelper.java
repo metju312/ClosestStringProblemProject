@@ -10,19 +10,25 @@ public class CSPHelper {
     {
     }
 
-    public int sprawdzHD(String sprawdzany) // n * (1 + 5m) + 4
+    public int sprawdzHD(String sprawdzany) // pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4
     {
         int HD = 0; // 1
         int HDObecny; // 1
         int l = sprawdzany.length(); // 1
-        for(String s:  listS) // n * ( 1 + 4m)
+        for(String s:  listS) // pes: n * (3 + 4m) ; opt: n * (3 + 3m)
         {
             HDObecny = 0; // 1
-            for(int i = 0 ; i < l ; i++) // m * 5
-                if(s.charAt(i) != sprawdzany.charAt(i)) // 1
+            for(int i = 0 ; i < l ; i++) // pes: 4m + 1 ; opt: 3m + 1
+            {
+                if (s.charAt(i) != sprawdzany.charAt(i)) // 1
+                {
                     HDObecny++; // 1
-            if(HD < HDObecny) // 1
+                }
+            }
+            if(HD < HDObecny) // pes: 2 ; opt: 1 ; Ze względu na mało istotna zmiane dla zlozonosci, zakladamy, ze 1
+            {
                 HD = HDObecny; // 1
+            }
         }
         return HD; // 1
     }

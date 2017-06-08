@@ -139,32 +139,32 @@ public class ACO {
 
 	public String wymarszKolonii()
 	{
-		int[] najkrotszaDroga = new int[m]; // 1
+		int[] najkrotszaDroga; // 1
 		String sprawdzany; // 1
-		int[] obecnaDroga = znajdzDroge(); // 5m + 3m * lA + 5
+		int[] obecnaDroga = znajdzDroge(); // pes: 4|A| + 4 + 2m + 5 ;  opt: 4 + 2m + 5 ; wariant zalezny od
 		najkrotszaDroga = obecnaDroga; // 1
 		int hdNajkrotszych = csphelper.sprawdzHD(zbudujString(najkrotszaDroga)); //2m + |S| * 2l + 2|S| + 3
 		
-		for(int i = 1 ; i < liczbaMrowek ; i++) // Od pierwszego, ponieważ zmienna "obecnaDroga" inicjowana jest tablica otrzymana przez pierwsza mrowke
+		for(int i = 1 ; i < liczbaMrowek ; i++) // ; Od pierwszego, ponieważ zmienna "obecnaDroga" inicjowana jest tablica otrzymana przez pierwsza mrowke
 		{
-			obecnaDroga = znajdzDroge(); // 5m + 3m * lA + 5
-			sprawdzany = zbudujString(obecnaDroga); // 2m + 1
-			// TODO pomiar pamięci
+			obecnaDroga = znajdzDroge(); //  pes: 4|A| + 4 + 2m + 5 ;  opt: 4 + 2m + 5
+			sprawdzany = zbudujString(obecnaDroga); // 2m + 3
+
 			long pamiec = dajUzyciePamieci();
 			listaPamieci.add(pamiec);
 			if(pamiecMax < pamiec){
 				pamiecMax = pamiec;
 			}
 
-			if(csphelper.sprawdzHD(sprawdzany) < hdNajkrotszych)
+			if(csphelper.sprawdzHD(sprawdzany) < hdNajkrotszych) // 1
 			{
-				najkrotszaDroga = obecnaDroga;
-				hdNajkrotszych = csphelper.sprawdzHD(sprawdzany); // 
+				najkrotszaDroga = obecnaDroga; // 1
+				hdNajkrotszych = csphelper.sprawdzHD(sprawdzany); // n * (1 + 5m) + 5
 			}
 		}
-		paruj();
-		dodajFeromonow(najkrotszaDroga);
-		return zbudujString(najkrotszaDroga);
+		paruj(); // 2m + 3m * |A|
+		dodajFeromonow(najkrotszaDroga); // n(1 + 5m) + 5m + 7
+		return zbudujString(najkrotszaDroga); //2m + 3
 	}
 
 	private static long dajUzyciePamieci(){
