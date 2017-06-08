@@ -44,15 +44,15 @@ public class ACO {
 		lA = a.size();
 		csphelper = new CSPHelper();
 		csphelper.setListS(S);
-		inicjalizuj(); // 2m + 2m * lA + 3
+		inicjalizuj(); // 2m + 2m * |A| + 3
 	}
 
-	public void inicjalizuj() // 2m + 2m * lA + 3
+	public void inicjalizuj() // 2m + 2m * |A| + 3
 	{
 		T = new double[m][lA]; //1
-		for (int i = 0 ; i < m ; i++) // 2m * lA
+		for (int i = 0 ; i < m ; i++) // 2m * |A|
 		{
-			for(int j = 0 ; j < lA ; j++) // 2lA
+			for(int j = 0 ; j < lA ; j++) // 2|A|
 			{
 				T[i][j] = 1.0/(double)lA; //1
 			}
@@ -64,12 +64,12 @@ public class ACO {
 		}
 	}
 	
-	public void paruj() // 2m + 3m * lA
+	public void paruj() // 2m + 3m * |A|
 	{
-		for (int i = 0 ; i < m ; i++)// 2m + 3m * lA
+		for (int i = 0 ; i < m ; i++)// 2m + 3m * |A|
 		{
 			sumaWag[i] = 0; //1
-			for(int j = 0 ; j < lA ; j++) //3lA
+			for(int j = 0 ; j < lA ; j++) //3|A|
 			{
 				T[i][j] = T[i][j] * (1.0 - p); //1
 				sumaWag[i] += T[i][j];  //1
@@ -77,10 +77,10 @@ public class ACO {
 		}
 	}
 
-	public void dodajFeromonow(int[] droga) // 5m + 3
+	public void dodajFeromonow(int[] droga) // n(1 + 5m) + 5m + 7
 	{
 		double HD = 0; //1 
-		HD = csphelper.sprawdzHD(zbudujString(droga)); //2m + 2
+		HD = csphelper.sprawdzHD(zbudujString(droga)); // n(1 + 5m) + 2m + 6 = n * (1 + 5m) + 4 + 2m + 2 ; n * (1 + 5m) + 4 <- sprawdz HD ; 2m + 2 < - zbudujDtring
 		for( int i = 0 ; i < m ; i++) // 3m
 		{
 			T[i][droga[i]] += (HD/ (double) m * wspDod); // 1
@@ -88,15 +88,15 @@ public class ACO {
 		}
 	}
 
-	public String zbudujString(int[] droga) //2m + 1
+	public String zbudujString(int[] droga) //2m + 2
 	{
 		String budowany = ""; //1
-		for(int i = 0 ; i < m ; i++) //m + m * 1
+		for(int i = 0 ; i < m ; i++) //2m
 			budowany += A.get(droga[i]); //1
-		return budowany;
+		return budowany; // 1
 	}
 	
-	public int[] znajdzDroge() // 5m + 3m * lA + 5
+	public int[] znajdzDroge() // pes: 4|A| + 4 + 2m + 5 ;  opt: 4 + 2m + 5
 	{
 		int[] droga = new int[m]; // 1
 		for(int i = 0 ; i < m ; i++) // 2m
@@ -106,12 +106,12 @@ public class ACO {
 		double wybor; // 1
 		int j; // 1
 		Random generator = new Random(); // 1
-		for(int i = 0 ; i < m ; i++) // 3 m + 3 m * lA
+		for(int i = 0 ; i < m ; i++) // pes: 4|A| + 4 ; opt: 4
 		{
 			j = 0; //1
 			dystrybuanta = 0; // 1
 			wybor = (generator.nextDouble()*1000)%sumaWag[i]; // 1
-			while(droga[i] == -1) // 3 * lA		j, iterator, nie przekroczy lA
+			while(droga[i] == -1) // pes: 4|A| + 1 ; opt: 4	;  j, iterator, nie przekroczy lA
 			{
 				dystrybuanta += T[i][j]; //1
 				if(wybor <= dystrybuanta) //1
@@ -119,7 +119,7 @@ public class ACO {
 				j++; //1
 			}
 		}
-		return droga;
+		return droga; // 1
 	}
 	
 	public String znajdzNajblizszyString()
@@ -128,12 +128,12 @@ public class ACO {
 		String najblizszy = wymarszKolonii(); // 
 		for(int i = 1 ; i < liczbaGeneracji ; i++) // Od pierwszego, ponieważ zmienna najblizsze inicjowana lista otrzymana przez pierwsza generacje
 		{
-			obecnejGeneracji = wymarszKolonii();
-			if(csphelper.sprawdzHD(najblizszy) > csphelper.sprawdzHD(obecnejGeneracji))
-				najblizszy = obecnejGeneracji;
+			obecnejGeneracji = wymarszKolonii(); //
+			if(csphelper.sprawdzHD(najblizszy) > csphelper.sprawdzHD(obecnejGeneracji)) // pes: 2 ; opt: 1
+				najblizszy = obecnejGeneracji; // 1
 		}
-		inicjalizuj();
-		return najblizszy;
+		//inicjalizuj();
+		return najblizszy; // 1
 	}
 	
 

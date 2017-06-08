@@ -10,21 +10,21 @@ public class CSPHelper {
     {
     }
 
-    public int sprawdzHD(String sprawdzany)
+    public int sprawdzHD(String sprawdzany) // n * (1 + 5m) + 4
     {
-        int HD = 0;
-        int HDObecny;
-        int l = sprawdzany.length();
-        for(String s:  listS)
+        int HD = 0; // 1
+        int HDObecny; // 1
+        int l = sprawdzany.length(); // 1
+        for(String s:  listS) // n * ( 1 + 4m)
         {
-            HDObecny = 0;
-            for(int i = 0 ; i < l ; i++)
-                if(s.charAt(i) != sprawdzany.charAt(i))
-                    HDObecny++;
-            if(HD < HDObecny)
-                HD = HDObecny;
+            HDObecny = 0; // 1
+            for(int i = 0 ; i < l ; i++) // m * 5
+                if(s.charAt(i) != sprawdzany.charAt(i)) // 1
+                    HDObecny++; // 1
+            if(HD < HDObecny) // 1
+                HD = HDObecny; // 1
         }
-        return HD;
+        return HD; // 1
     }
 
     public List<String> getListS() {
