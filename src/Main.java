@@ -15,7 +15,10 @@ public class Main {
 
     private static int iterator = 2;
 
-    private static int razyADokladny = 100;
+    private static int sumaHDDokladny = 0;
+    private static int sumaHDHeurystyczny = 0;
+
+    private static int razyADokladny = 1;
     private static int razyAHeurystyczny = 100;
 
     private static long pamiecDokladny = 0;
@@ -82,6 +85,8 @@ public class Main {
 
             rozwiazZadanie();
         }
+        sumaHDDokladny *= razyAHeurystyczny/razyADokladny;
+        System.out.println("Suma HD: \n Dokladny: " + sumaHDDokladny + "\n Heurystyczny: " + sumaHDHeurystyczny + "\n Roznica: " + (sumaHDHeurystyczny - sumaHDDokladny));
     }
 
     private static void rozwiazZadanie() {
@@ -122,8 +127,8 @@ public class Main {
             pamiecDokladny = pamiec;
         }
         System.out.print(rozwiazanie + ", HD = " + cspHelper.sprawdzHD(rozwiazanie) + " ");
+        sumaHDDokladny += cspHelper.sprawdzHD(rozwiazanie);
     }
-
 
     private static void sprawdzRozwiazanieHeurystyczne() {
         ACO aco = new ACO(listS, alfabet, 80, 40, cspHelper);
@@ -133,6 +138,7 @@ public class Main {
             pamiecHeurystyczny = pamiec;
         }
         System.out.print(rozwiazanie + ", HD = " + cspHelper.sprawdzHD(rozwiazanie) + " ");
+        sumaHDHeurystyczny += cspHelper.sprawdzHD(rozwiazanie);
     }
 
     private static boolean czyDlugoscAlfabetuToParametr(){

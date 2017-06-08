@@ -13,7 +13,8 @@ public class ACO {
 	int lA; //liczba elementow alfabetu
 	int liczbaGeneracji;
 	int liczbaMrowek;
-	double p; // wspolczynnik parowania
+	double p = 0.05; // wspolczynnik parowania
+	double wspDod = 0.1; // wspolczynnik dodania feromonow
 	double[] sumaWag;
 	CSPHelper csphelper;
 	List<Long> listaPamieci = new ArrayList<>();
@@ -61,7 +62,6 @@ public class ACO {
 		{
 			sumaWag[i] = 1.0; //1
 		}
-		p = 0.1; //1
 	}
 	
 	public void paruj() // 2m + 3m * lA
@@ -83,8 +83,8 @@ public class ACO {
 		HD = csphelper.sprawdzHD(zbudujString(droga)); //2m + 2
 		for( int i = 0 ; i < m ; i++) // 3m
 		{
-			T[i][droga[i]] += HD/ (double) m; // 1
-			sumaWag[i] += HD/ (double) m; // 1
+			T[i][droga[i]] += (HD/ (double) m * wspDod); // 1
+			sumaWag[i] += (HD/ (double) m * wspDod); // 1
 		}
 	}
 
@@ -162,6 +162,8 @@ public class ACO {
 				hdNajkrotszych = csphelper.sprawdzHD(sprawdzany); // 
 			}
 		}
+		paruj();
+		dodajFeromonow(najkrotszaDroga);
 		return zbudujString(najkrotszaDroga);
 	}
 
