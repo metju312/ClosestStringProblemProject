@@ -10,6 +10,7 @@ public class ACO {
 	List<String> S;
 	int m; //dlugosc kazdego stringa
 	List<Character> A; //alfabet
+	int n; //liczba stringów
 	int lA; //liczba elementow alfabetu
 	int liczbaGeneracji;
 	int liczbaMrowek;
@@ -31,6 +32,7 @@ public class ACO {
 		m = s.get(0).length();
 		lA = a.size();
 		csphelper = csph;
+		n=S.size();
 		inicjalizuj();
 	}
 	
@@ -45,6 +47,15 @@ public class ACO {
 		csphelper = new CSPHelper();
 		csphelper.setListS(S);
 		inicjalizuj(); // 2m + 2m * |A| + 3
+	}
+
+	public double dajZlozonoscObliczeniowaOczekiwana(){
+		return 14 + 8*m + 11*m*lA + 6*n + 8*m*n + liczbaMrowek * (6 + 6*m + 4*m*lA) + (liczbaGeneracji-1) * (8*m*lA + 4*m + 13*n + 24*m*n + 13 + liczbaMrowek * (6 + 6*m + 4*m*lA));
+	}
+
+	public double dajPamiecOczekiwana(){
+		//m * (double + 2 * int + 2 * char + |A| * double + n  * char) + |A| * char
+		return m*(64+2*32+2*16+lA*64+n*16) + lA * 16;
 	}
 
 	public void inicjalizuj() // 2m + 2m * |A| + 3

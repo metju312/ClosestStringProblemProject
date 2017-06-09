@@ -18,12 +18,12 @@ public class ChartFrame extends ApplicationFrame {
     public ChartFrame(String var1, XYSeriesCollection collection) {
         super(var1);
         JPanel var2 = createDemoPanel(collection);
-        var2.setPreferredSize(new Dimension(500, 270));
+        var2.setPreferredSize(new Dimension(500*2, 270*2));
         this.getContentPane().add(var2);
     }
 
     public static JPanel createDemoPanel(XYSeriesCollection collection) {
-        NumberAxis var0 = new NumberAxis("X");
+        NumberAxis var0 = new NumberAxis("Wartość parametru [1]");
         var0.setAutoRangeIncludesZero(false);
         NumberAxis var1 = new NumberAxis("Y");
         var1.setAutoRangeIncludesZero(false);

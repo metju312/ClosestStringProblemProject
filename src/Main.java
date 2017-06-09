@@ -18,17 +18,45 @@ public class Main {
     private static int sumaHDDokladny = 0;
     private static int sumaHDHeurystyczny = 0;
 
-    private static int razyADokladny = 1;
-    private static int razyAHeurystyczny = 100;
-
     private static long pamiecDokladny = 0;
     private static long pamiecHeurystyczny = 0;
 
     private static XYSeries dokladnyDane = new XYSeries("Dokladny");
     private static XYSeries heurystycznyDane = new XYSeries("Heurystyczny");
 
+    private static XYSeries dokladnyDaneT = new XYSeries("Dokladny teoretyczny");
+    private static XYSeries heurystycznyDaneT = new XYSeries("Heurystyczny teoretyczny");
+
     private static XYSeries dokladnyPamiec = new XYSeries("Pamiec Dokladny");
     private static XYSeries heurystycznyPamiec = new XYSeries("Pamiec Heurystyczny");
+
+    private static XYSeries dokladnyPamiecT = new XYSeries("Teoretyczna Pamiec A. Dokladny");
+    private static XYSeries heurystycznyPamiecT = new XYSeries("Teoretyczna Pamiec A. Heurystyczny");
+
+
+    private static long mnoznikHeurystycznyPamiec = 20;
+
+    //8 5 5
+    private static int razyADokladny = 2;
+    private static int razyAHeurystyczny = 200;
+    private static long mnoznikDokladny = 90000;
+    private static long mnoznikHeurystyczny = 1500;
+    private static long obnizenieHeurystycznyT = 1;
+
+    //5 6 5
+//    private static int razyADokladny = 2;
+//    private static int razyAHeurystyczny = 200;
+//    private static long mnoznikDokladny = 150000;
+//    private static long mnoznikHeurystyczny = 1000;
+//    private static long obnizenieHeurystycznyT = 1;
+
+    //5 5 8
+//    private static int razyADokladny = 2;
+//    private static int razyAHeurystyczny = 200;
+//    private static long mnoznikDokladny = 1111190000;
+//    private static long mnoznikHeurystyczny = 1500;
+//    private static long obnizenieHeurystycznyT = 1;
+
 
     //parametry: [dlugoscAlfabetu] [dlugoscCiagowWejsciowych] [liczbaCiagowWejsciowych]
     public static void main(String[] args) throws IOException {
@@ -41,13 +69,17 @@ public class Main {
 
     private static void generujWykresPamieci() {
         XYSeriesCollection collection = new XYSeriesCollection(dokladnyPamiec);
+        collection.addSeries(dokladnyPamiecT);
         collection.addSeries(heurystycznyPamiec);
+        collection.addSeries(heurystycznyPamiecT);
         ChartFrame.generateChart(collection);
     }
 
     private static void generujWykresDanych() {
         XYSeriesCollection collection = new XYSeriesCollection(dokladnyDane);
+        collection.addSeries(dokladnyDaneT);
         collection.addSeries(heurystycznyDane);
+        collection.addSeries(heurystycznyDaneT);
         ChartFrame.generateChart(collection);
     }
 
@@ -99,8 +131,11 @@ public class Main {
         long totalTime = endTime - startTime;
         System.out.print(", T: " + totalTime/1000.0 + "s");
         System.out.println(", P: " + pamiecDokladny + " MB");
-        dokladnyDane.add(iterator, totalTime);
+        RozwiazanieDokladne rozwiazanieDokladne = new RozwiazanieDokladne(cspHelper);//do obliczenia zlozonosci teoretycznej
+        dokladnyDane.add(iterator, totalTime*mnoznikDokladny);
+        dokladnyDaneT.add(iterator, rozwiazanieDokladne.dajZlozonoscObliczeniowaOczekiwana());
         dokladnyPamiec.add(iterator, pamiecDokladny);
+        dokladnyPamiecT.add(iterator, rozwiazanieDokladne.dajPamiecOczekiwana());
 
 
         System.out.print("H: ");
@@ -113,8 +148,11 @@ public class Main {
         System.out.print(", T: " + totalTime/1000.0 + "s");
         System.out.println(", P: " + pamiecHeurystyczny + " MB");
         System.out.println("-----------------------------------------------");
-        heurystycznyDane.add(iterator, totalTime);
-        heurystycznyPamiec.add(iterator, pamiecHeurystyczny);
+        ACO aco = new ACO(listS, alfabet, 80, 40, cspHelper);//do obliczenia zlozonosci teoretycznej
+        heurystycznyDane.add(iterator, totalTime*mnoznikHeurystyczny);
+        heurystycznyDaneT.add(iterator, aco.dajZlozonoscObliczeniowaOczekiwana()/obnizenieHeurystycznyT);
+        heurystycznyPamiec.add(iterator, pamiecHeurystyczny*mnoznikHeurystycznyPamiec);
+        heurystycznyPamiecT.add(iterator, aco.dajPamiecOczekiwana());
 
         iterator++;
     }

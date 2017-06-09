@@ -9,10 +9,29 @@ public class RozwiazanieDokladne {
     private String znaleziony = "";
     private long pamiecMax = 0;
 
+
+
+    private int A; // dlugoscAlfabetu
+    private int m; // dlugoscCiagowWejsciowych
+    private int n; // liczbaCiagowWejsciowych
+
     public RozwiazanieDokladne(CSPHelper cspHelper) {
         this.cspHelper = cspHelper;
         this.alfabet = cspHelper.getAlfabet();
         this.bestHD = cspHelper.getListS().get(0).length() + 1;
+
+        A = alfabet.size();
+        m = cspHelper.getListS().get(0).length();
+        n = cspHelper.getListS().size();
+    }
+
+    public double dajZlozonoscObliczeniowaOczekiwana(){
+        return Math.pow(A,m-1)*(9*m*n+4*n+14)+(((1-Math.pow(A,n))/(1-A))-Math.pow(A,m-1))*(4*A+8);
+    }
+
+    public double dajPamiecOczekiwana(){
+        //2 * char * (suma i od i = 1 do m ) + m * (char + int + long)
+        return 2 * 16 * ( m ) + m * (16 + 32 + 64);
     }
 
     public String rozwiaz() {
@@ -30,7 +49,6 @@ public class RozwiazanieDokladne {
         if(pamiecMax < pamiec){
             pamiecMax = pamiec;
         }
-
         if (i == 0) { // true: n * (1 + 5m) + 9 + (pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5) ; false : 4|A| + 3
             int temp = cspHelper.sprawdzHD(s); // pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5
             if (temp < bestHD) { // 1
