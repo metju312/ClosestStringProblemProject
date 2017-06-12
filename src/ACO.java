@@ -46,7 +46,7 @@ public class ACO {
 		lA = a.size();
 		csphelper = new CSPHelper();
 		csphelper.setListS(S);
-		inicjalizuj(); // 2m + 2m * |A| + 3
+		inicjalizuj(); // m * (3|A| + 1) + 3m + 3
 	}
 
 	public double dajZlozonoscObliczeniowaOczekiwana(){
@@ -58,29 +58,29 @@ public class ACO {
 		return m*(64+2*32+2*16+lA*64+n*16) + lA * 16;
 	}
 
-	public void inicjalizuj() // 2m + 2m * |A| + 3
+	public void inicjalizuj() // m * (3|A| + 1) + 3m + 3
 	{
 		T = new double[m][lA]; //1
-		for (int i = 0 ; i < m ; i++) // 2m * |A|
+		for (int i = 0 ; i < m ; i++) // m * (3|A| + 1)
 		{
-			for(int j = 0 ; j < lA ; j++) // 2|A|
+			for(int j = 0 ; j < lA ; j++) // 3|A| + 1
 			{
 				T[i][j] = 1.0/(double)lA; //1
 			}
 		}
 		sumaWag = new double[m]; //1
-		for(int i = 0 ; i < m ; i++) //2m
+		for(int i = 0 ; i < m ; i++) //3m + 1
 		{
 			sumaWag[i] = 1.0; //1
 		}
 	}
 	
-	public void paruj() // 2m + 3m * |A|
+	public void paruj() // 3m + 2 + m *4|A| + 1
 	{
-		for (int i = 0 ; i < m ; i++)// 2m + 3m * |A|
+		for (int i = 0 ; i < m ; i++)// 3m + 2 + m *4|A| + 1
 		{
 			sumaWag[i] = 0; //1
-			for(int j = 0 ; j < lA ; j++) //3|A|
+			for(int j = 0 ; j < lA ; j++) //4|A| + 1
 			{
 				T[i][j] = T[i][j] * (1.0 - p); //1
 				sumaWag[i] += T[i][j];  //1
@@ -88,26 +88,26 @@ public class ACO {
 		}
 	}
 
-	public void dodajFeromonow(int[] droga) // n(1 + 5m) + 5m + 7
+	public void dodajFeromonow(int[] droga) // 7m + 6 + (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4)
 	{
 		double HD = 0; //1 
-		HD = csphelper.sprawdzHD(zbudujString(droga)); // n(1 + 5m) + 2m + 6 = n * (1 + 5m) + 4 + 2m + 2 ; n * (1 + 5m) + 4 <- sprawdz HD ; 2m + 2 < - zbudujDtring
-		for( int i = 0 ; i < m ; i++) // 3m
+		HD = csphelper.sprawdzHD(zbudujString(droga)); // 3m + 4 + (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4) ; (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4) <- sprawdz HD ; 3m + 4 < - zbudujString
+		for( int i = 0 ; i < m ; i++) // 4m + 1
 		{
 			T[i][droga[i]] += (HD/ (double) m * wspDod); // 1
 			sumaWag[i] += (HD/ (double) m * wspDod); // 1
 		}
 	}
 
-	public String zbudujString(int[] droga) //2m + 2
+	public String zbudujString(int[] droga) //3m + 4
 	{
 		String budowany = ""; //1
-		for(int i = 0 ; i < m ; i++) //2m
+		for(int i = 0 ; i < m ; i++) //3m + 1
 			budowany += A.get(droga[i]); //1
 		return budowany; // 1
 	}
 	
-	public int[] znajdzDroge() // pes: 4|A| + 4 + 2m + 5 ;  opt: 4 + 2m + 5
+	public int[] znajdzDroge() // 6 + 2m + m * ( pes: 4|A| + 4 ; opt: 13)
 	{
 		int[] droga = new int[m]; // 1
 		for(int i = 0 ; i < m ; i++) // 2m
@@ -117,7 +117,7 @@ public class ACO {
 		double wybor; // 1
 		int j; // 1
 		Random generator = new Random(); // 1
-		for(int i = 0 ; i < m ; i++) // pes: 4|A| + 4 ; opt: 4
+		for(int i = 0 ; i < m ; i++) // m * ( pes: 4|A| + 4 ; opt: 13)
 		{
 			j = 0; //1
 			dystrybuanta = 0; // 1
@@ -133,14 +133,14 @@ public class ACO {
 		return droga; // 1
 	}
 	
-	public String znajdzNajblizszyString()
+	public String znajdzNajblizszyString() // 3 + wm + (liczbaGeneracji-1) * (wm + 1 + 2 * (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4))
 	{
 		String obecnejGeneracji; // 1
-		String najblizszy = wymarszKolonii(); // 
-		for(int i = 1 ; i < liczbaGeneracji ; i++) // Od pierwszego, ponieważ zmienna najblizsze inicjowana lista otrzymana przez pierwsza generacje
+		String najblizszy = wymarszKolonii(); // wm + 1
+		for(int i = 1 ; i < liczbaGeneracji ; i++) // (liczbaGeneracji-1) * (wm + 1 + 2 * (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4)) Od pierwszego, ponieważ zmienna najblizsze inicjowana lista otrzymana przez pierwsza generacje
 		{
-			obecnejGeneracji = wymarszKolonii(); //
-			if(csphelper.sprawdzHD(najblizszy) > csphelper.sprawdzHD(obecnejGeneracji)) // pes: 2 ; opt: 1
+			obecnejGeneracji = wymarszKolonii(); // wm + 1
+			if(csphelper.sprawdzHD(najblizszy) > csphelper.sprawdzHD(obecnejGeneracji)) // 2 * (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4) + 1
 				najblizszy = obecnejGeneracji; // 1
 		}
 		//inicjalizuj();
@@ -148,18 +148,18 @@ public class ACO {
 	}
 	
 
-	public String wymarszKolonii()
+	public String wymarszKolonii() // wm =  1 + 1 + 7 + 2m + m * ( pes: 4|A| + 4 ; opt: 13) + 1 + (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4) + 3m + 5 + 1 + liczbaMrowek * (6 + 2m + m * ( pes: 4|A| + 4 ; opt: 13)) + 3m + 2 + m *4|A| + 1 + 7m + 6 + (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4) + 3m + 4
 	{
 		int[] najkrotszaDroga; // 1
 		String sprawdzany; // 1
-		int[] obecnaDroga = znajdzDroge(); // pes: 4|A| + 4 + 2m + 5 ;  opt: 4 + 2m + 5 ; wariant zalezny od
+		int[] obecnaDroga = znajdzDroge(); //7 + 2m + m * ( pes: 4|A| + 4 ; opt: 13)
 		najkrotszaDroga = obecnaDroga; // 1
-		int hdNajkrotszych = csphelper.sprawdzHD(zbudujString(najkrotszaDroga)); //2m + |S| * 2l + 2|S| + 3
+		int hdNajkrotszych = csphelper.sprawdzHD(zbudujString(najkrotszaDroga)); // (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4) + 3m + 5
 		
-		for(int i = 1 ; i < liczbaMrowek ; i++) // ; Od pierwszego, ponieważ zmienna "obecnaDroga" inicjowana jest tablica otrzymana przez pierwsza mrowke
+		for(int i = 1 ; i < liczbaMrowek ; i++) // 1 + liczbaMrowek * (6 + 2m + m * ( pes: 4|A| + 4 ; opt: 13)) ; Od pierwszego, ponieważ zmienna "obecnaDroga" inicjowana jest tablica otrzymana przez pierwsza mrowke
 		{
-			obecnaDroga = znajdzDroge(); //  pes: 4|A| + 4 + 2m + 5 ;  opt: 4 + 2m + 5
-			sprawdzany = zbudujString(obecnaDroga); // 2m + 3
+			obecnaDroga = znajdzDroge(); // 6 + 2m + m * ( pes: 4|A| + 4 ; opt: 13)
+			sprawdzany = zbudujString(obecnaDroga); // 3m + 4
 
 			long pamiec = dajUzyciePamieci();
 			listaPamieci.add(pamiec);
@@ -167,15 +167,15 @@ public class ACO {
 				pamiecMax = pamiec;
 			}
 
-			if(csphelper.sprawdzHD(sprawdzany) < hdNajkrotszych) // 1
+			if(csphelper.sprawdzHD(sprawdzany) < hdNajkrotszych) //  pes : (pes: n * (3 + 4m) + 6 ; opt: n * (3 + 3m) + 6) ; opt : 1
 			{
 				najkrotszaDroga = obecnaDroga; // 1
-				hdNajkrotszych = csphelper.sprawdzHD(sprawdzany); // n * (1 + 5m) + 5
+				hdNajkrotszych = csphelper.sprawdzHD(sprawdzany); //  pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5
 			}
 		}
-		paruj(); // 2m + 3m * |A|
-		dodajFeromonow(najkrotszaDroga); // n(1 + 5m) + 5m + 7
-		return zbudujString(najkrotszaDroga); //2m + 3
+		paruj(); // 3m + 2 + m *4|A| + 1
+		dodajFeromonow(najkrotszaDroga); // 7m + 6 + (pes: n * (3 + 4m) + 4 ; opt: n * (3 + 3m) + 4)
+		return zbudujString(najkrotszaDroga); //3m + 4
 	}
 
 	private static long dajUzyciePamieci(){

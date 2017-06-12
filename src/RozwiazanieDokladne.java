@@ -41,15 +41,16 @@ public class RozwiazanieDokladne {
         return znaleziony;
     }
 
-     //Sumaryczna zlozonosc obliczeniowa wywolan metody: |A|^(m-1) * (n * (1 + 5m) + 9 + (pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5)) + ((1-|A|^m)/(1-|A|) - |A|^(m-1)) * (|4A| + 8 )
+    // Sumaryczna zlozonosc obliczeniowa wywolan metody: |A|^(m-1) * (3 + (pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5)) + ((1-|A|^m)/(1-|A|) - |A|^(m-1)) * (|4A| + 8 )
     void dostawZnak(String s, int i){ // n * (1 + 5m) + 9 + (pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5) dla i == 0 ; 4|A| + 8 ; metoda rekurencyjna, wywolywana (1-|A|^m)/(1-|A|) razy
-        // |A|^(m-1) * (n * (1 + 5m) + 9 + (pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5)) ; |A|^(m-1) wywołan o i == 0
+        // |A|^(m-1) * (3 + (pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5)) ; |A|^(m-1) wywołan o i == 0
         // ((1-|A|^m)/(1-|A|) - |A|^(m-1)) * (|4A| + 8) ; (1-|A|^m)/(1-|A|) - |A|^(m-1) wywolan o i != 0
         long pamiec = dajUzyciePamieci();
         if(pamiecMax < pamiec){
             pamiecMax = pamiec;
         }
-        if (i == 0) { // true: n * (1 + 5m) + 9 + (pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5) ; false : 4|A| + 3
+
+        if (i == 0) { // true: 3 + (pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5) ; false : 4|A| + 3
             int temp = cspHelper.sprawdzHD(s); // pes: n * (3 + 4m) + 5 ; opt: n * (3 + 3m) + 5
             if (temp < bestHD) { // 1
                 bestHD = temp; // 1
